@@ -30,13 +30,13 @@ public class Convention {
 	private Date DerniereDateVisiteEnseignant;
 	@OneToOne
     @JoinColumn(name = "etudiant_id")
-	Etudiant etudiant;
+	private Etudiant etudiant;
 	@OneToOne
     @JoinColumn(name = "propStage_id")
-	PropositionStage propStage;
+	private PropositionStage propStage;
 	@ManyToOne
 	@JoinColumn(name = "enseignant_id")
-	Enseignant enseignant;
+	private Enseignant enseignant;
 	
 	public Convention() {
 		super();

@@ -14,20 +14,20 @@ import javax.persistence.Table;
 public class PropositionStage {
 	@Id
 	@GeneratedValue
-	int id;
+	private int id;
 	@Column(name="subject_offer")
-	String sujet_propose;
+	private String sujet_propose;
 	@Column(name="date_offer")
-	Date date_proposee;
+	private Date date_proposee;
 	@Column(name="duration")
-	int duree;
+	private int duree;
 	@Column(name="pay")
-	double remuneration;
+	private double remuneration;
 	@ManyToOne
-	@JoinColumn(name="id")
-	Entreprise entreprise;
+	@JoinColumn(name="entreprise_id")
+	private Entreprise entreprise;
 	@OneToOne(mappedBy="propStage")
-	Convention convention;
+	private Convention convention;
 	
 	public PropositionStage() {
 		super();
