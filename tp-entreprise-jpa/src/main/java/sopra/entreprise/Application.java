@@ -9,7 +9,7 @@ import sopra.entreprise.repository.jpa.PersonneRepositoryJpa;
 public class Application {
 	private static Application instance = null;
 
-	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("tpvol-jpa");
+	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp-entreprise-jpa");
 
 	private final IPersonneRepository personneRepo = new PersonneRepositoryJpa();
 	
