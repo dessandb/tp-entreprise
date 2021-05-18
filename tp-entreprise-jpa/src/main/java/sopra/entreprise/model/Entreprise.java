@@ -1,10 +1,13 @@
 package sopra.entreprise.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -15,25 +18,29 @@ public class Entreprise extends Personne {
 	private String adresse;
 	@ManyToOne(mappedBy="ent")
 	EtudiantContactEntreprise contact;
+	@OneToMany(mappedBy="entreprise")
+	List<PropositionStage> propositions_stages;
 	
 	public Entreprise() {
 		super();
 		this.adresse = null;
 		this.contact = null;
+		this.propositions_stages = null;
 	}
 	
 	public Entreprise(String adr, EtudiantContactEntreprise contact) {
 		super();
 		this.adresse = adr;
 		this.contact = contact;
+		this.propositions_stages = null;
 	}
 
-	public String getAdr() {
+	public String getAdresse() {
 		return adresse;
 	}
 
-	public void setAdr(String adr) {
-		this.adresse = adr;
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
 	}
 
 	public EtudiantContactEntreprise getContact() {
@@ -42,6 +49,14 @@ public class Entreprise extends Personne {
 
 	public void setContact(EtudiantContactEntreprise contact) {
 		this.contact = contact;
+	}
+
+	public List<PropositionStage> getPropositions_stages() {
+		return propositions_stages;
+	}
+
+	public void setPropositions_stages(List<PropositionStage> propositions_stages) {
+		this.propositions_stages = propositions_stages;
 	}
 	
 	
