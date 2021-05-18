@@ -1,11 +1,10 @@
 package sopra.entreprise.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @DiscriminatorValue("Etudiant")
@@ -13,8 +12,9 @@ public class Etudiant extends Personne {
 	
 	@Column(name="Prenom")
 	private String prenom;
-	@OneToMany(mappedBy = "etud")
-	private List<EtudiantContactEntreprise> etudiantscontactsentreprises;
+	@ManyToOne
+	@JoinColumn(name="EtudiantContactEntreprise_Id")
+	private EtudiantContactEntreprise contact_etud;
 	
 
 	public Etudiant() {
@@ -34,13 +34,15 @@ public class Etudiant extends Personne {
 		this.prenom = prenom;
 	}
 
-	public List<EtudiantContactEntreprise> getEtudiantscontactsentreprises() {
-		return etudiantscontactsentreprises;
+	public EtudiantContactEntreprise getContact_etud() {
+		return contact_etud;
 	}
 
-	public void setEtudiantscontactsentreprises(List<EtudiantContactEntreprise> etudiantscontactsentreprises) {
-		this.etudiantscontactsentreprises = etudiantscontactsentreprises;
+	public void setContact_etud(EtudiantContactEntreprise contact_etud) {
+		this.contact_etud = contact_etud;
 	}
+
+	
 	
 	
 	
