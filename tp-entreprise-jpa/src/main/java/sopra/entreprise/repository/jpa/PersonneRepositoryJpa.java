@@ -44,7 +44,7 @@ public class PersonneRepositoryJpa implements IPersonneRepository {
 		return personnes;
 	}
 
-	public Personne findById(Long id) {
+	public Personne findById(Integer numero) {
 		Personne personne = null;
 
 		EntityManager em = null;
@@ -55,7 +55,7 @@ public class PersonneRepositoryJpa implements IPersonneRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			personne = em.find(Personne.class, id);
+			personne = em.find(Personne.class, numero);
 
 			tx.commit();
 		} catch (Exception e) {
