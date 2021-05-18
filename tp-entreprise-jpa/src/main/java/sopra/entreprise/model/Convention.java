@@ -4,8 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -13,7 +15,8 @@ import javax.persistence.Table;
 @Table(name="convention")
 public class Convention {
 	@Id
-	@Column(name="numero")
+	@GeneratedValue
+	//@Column(name="numero")
 	private Integer numero;
 	@Column(name="remunerationFinale")
 	private Long RemunerationFinale;
@@ -25,27 +28,25 @@ public class Convention {
 	private Date DateSignature;
 	@Column(name="derniereDateVisiteEnseignant")
 	private Date DerniereDateVisiteEnseignant;
-	//@OneToOne
-    //@JoinColumn(name = "etudiant")
-	//Etudiant etudiant = new Etudiant;
 	@OneToOne
-    @JoinColumn(name = "propStage")
-	PropositionStage propStage = new PropositionStage();
-	//ManyToOne
-	//@JoinColumn(name = "enseignant")
-	//Enseignant enseignant = new Enseignant;
+    @JoinColumn(name = "etudiant_id")
+	Etudiant etudiant;
+	@OneToOne
+    @JoinColumn(name = "propStage_id")
+	PropositionStage propStage;
+	@ManyToOne
+	@JoinColumn(name = "enseignant_id")
+	Enseignant enseignant;
 	
 	public Convention() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
-	public Convention(Integer numero, Long remunerationFinale, String sujetMemoire, Date dateDebut, Date dateSignature,
+	public Convention(Long remunerationFinale, String sujetMemoire, Date dateDebut, Date dateSignature,
 			Date derniereDateVisiteEnseignant) {
 		super();
-		this.numero = numero;
 		RemunerationFinale = remunerationFinale;
 		SujetMemoire = sujetMemoire;
 		DateDebut = dateDebut;

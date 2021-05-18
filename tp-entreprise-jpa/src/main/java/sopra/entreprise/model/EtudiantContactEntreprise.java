@@ -1,13 +1,13 @@
 package sopra.entreprise.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="etudiant_contact_entreprise")
@@ -15,59 +15,58 @@ public class EtudiantContactEntreprise {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@ManyToOne
-	@JoinColumn("Etudiant_Numero")
-	private Etudiant etud;
-	@ManyToOne
-	@JoinColumn("Entreprise_Numero")
-	private Entreprise ent;
+	@OneToMany(mappedBy="contact")
+	private List<Entreprise> ents;
+	@OneToMany(mappedBy="contact_etud")
+	private List<Etudiant> etudiants;
 	@Column(name="DatePriseContact")
 	private Date DatePriseContact;
 	
-	
-	
-	public EntrepriseContactEtudiant() {
+	public EtudiantContactEntreprise() {
 		super();
 	}
 
-	
 
-	public EntrepriseContactEtudiant(Date datePriseContact) {
+
+	public EtudiantContactEntreprise(Date datePriseContact) {
 		super();
 		DatePriseContact = datePriseContact;
 	}
 
 
 
-	public EntrepriseContactEtudiant(Etudiant etud, Entreprise ent, Date datePriseContact) {
+	
+
+
+
+	public EtudiantContactEntreprise(List<Entreprise> ents, List<Etudiant> etudiants, Date datePriseContact) {
 		super();
-		this.etud = etud;
-		this.ent = ent;
+		this.ents = ents;
+		this.etudiants = etudiants;
 		DatePriseContact = datePriseContact;
 	}
 
 
-
-	public Etudiant getEtud() {
-		return etud;
+	public List<Entreprise> getEnts() {
+		return ents;
 	}
 
 
 
-	public void setEtud(Etudiant etud) {
-		this.etud = etud;
+	public void setEnts(List<Entreprise> ents) {
+		this.ents = ents;
 	}
 
 
 
-	public Entreprise getEnt() {
-		return ent;
+	public List<Etudiant> getEtudiants() {
+		return etudiants;
 	}
 
 
 
-	public void setEnt(Entreprise ent) {
-		this.ent = ent;
+	public void setEtudiants(List<Etudiant> etudiants) {
+		this.etudiants = etudiants;
 	}
 
 
