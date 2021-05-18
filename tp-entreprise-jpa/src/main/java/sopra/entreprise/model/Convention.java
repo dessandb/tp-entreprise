@@ -25,15 +25,15 @@ public class Convention {
 	private Date DateSignature;
 	@Column(name="derniereDateVisiteEnseignant")
 	private Date DerniereDateVisiteEnseignant;
-	//@OneToOne
-    //@JoinColumn(name = "etudiant")
-	//Etudiant etudiant = new Etudiant;
+	@OneToOne
+    @JoinColumn(name = "etudiant")
+	Etudiant etudiant = new Etudiant;
 	@OneToOne
     @JoinColumn(name = "propStage")
 	PropositionStage propStage = new PropositionStage();
-	//ManyToOne
-	//@JoinColumn(name = "enseignant")
-	//Enseignant enseignant = new Enseignant;
+	@ManyToOne
+	@JoinColumn(name = "enseignant")
+	Enseignant enseignant = new Enseignant;
 	
 	public Convention() {
 		super();
