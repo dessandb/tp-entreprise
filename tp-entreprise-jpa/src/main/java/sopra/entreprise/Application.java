@@ -21,7 +21,7 @@ import sopra.entreprise.repository.jpa.EtudiantRepositoryJpa;
 public class Application {
 	private static Application instance = null;
 
-	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp-entreprise-jpa");
+	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("stagesjpa");
 
 	private final IPersonneRepository personneRepo = new PersonneRepositoryJpa();
 	private final IEntrepriseRepository entrepriseRepo = new EntrepriseRepositoryJpa();

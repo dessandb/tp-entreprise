@@ -5,34 +5,39 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("Entreprise")
 public class Entreprise extends Personne {
 	
-	@Column(name="address")
+	@Column(name="adresse")
 	private String adresse;
-	@ManyToOne
-	@JoinColumn(name = "EtudiantContactEntreprise_Id")
-	EtudiantContactEntreprise contact;
 	@OneToMany(mappedBy="entreprise")
-	List<PropositionStage> propositions_stages;
+	private List<EtudiantContactEntreprise> contacts_ents;
+	@OneToMany(mappedBy="entreprise")
+	private List<PropositionStage> propositions_stages;
 	
+
 	public Entreprise() {
 		super();
-		this.adresse = null;
-		this.contact = null;
-		this.propositions_stages = null;
 	}
 	
-	public Entreprise(String adr, EtudiantContactEntreprise contact) {
+	
+
+	public Entreprise(String adresse) {
 		super();
-		this.adresse = adr;
-		this.contact = contact;
-		this.propositions_stages = null;
+		this.adresse = adresse;
+	}
+
+
+
+	public Entreprise(String adresse, List<EtudiantContactEntreprise> contacts_ents,
+			List<PropositionStage> propositions_stages) {
+		super();
+		this.adresse = adresse;
+		this.contacts_ents = contacts_ents;
+		this.propositions_stages = propositions_stages;
 	}
 
 	public String getAdresse() {
@@ -43,13 +48,19 @@ public class Entreprise extends Personne {
 		this.adresse = adresse;
 	}
 
-	public EtudiantContactEntreprise getContact() {
-		return contact;
+	
+
+	public List<EtudiantContactEntreprise> getContacts_ents() {
+		return contacts_ents;
 	}
 
-	public void setContact(EtudiantContactEntreprise contact) {
-		this.contact = contact;
+
+
+	public void setContacts_ents(List<EtudiantContactEntreprise> contacts_ents) {
+		this.contacts_ents = contacts_ents;
 	}
+
+
 
 	public List<PropositionStage> getPropositions_stages() {
 		return propositions_stages;
