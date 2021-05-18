@@ -8,7 +8,6 @@ public class Test1 {
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("stagesjpa");
 		emf.close();
-
 	}
 
 }
