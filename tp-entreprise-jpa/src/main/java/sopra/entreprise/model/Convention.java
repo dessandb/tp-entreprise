@@ -18,25 +18,25 @@ public class Convention {
 	@GeneratedValue
 	//@Column(name="numero")
 	private Integer numero;
-	@Column(name="remunerationFinale")
+	@Column(name="RemunerationFinale")
 	private Long RemunerationFinale;
-	@Column(name="sujetMemoire")
+	@Column(name="SujetMemoire")
 	private String SujetMemoire;
-	@Column(name="dateDebut")
+	@Column(name="DateDebut")
 	private Date DateDebut;
-	@Column(name="dateSignature")
+	@Column(name="DateSignature")
 	private Date DateSignature;
-	@Column(name="derniereDateVisiteEnseignant")
+	@Column(name="DerniereDateVisiteEnseignant")
 	private Date DerniereDateVisiteEnseignant;
 	@OneToOne
-    @JoinColumn(name = "etudiant_id")
-	private Etudiant etudiant;
+    @JoinColumn(name = "Etudiant_Numero")
+	Etudiant etudiant;
 	@OneToOne
-    @JoinColumn(name = "propStage_id")
-	private PropositionStage propStage;
+    @JoinColumn(name = "PropStage_Numero")
+	PropositionStage propStage;
 	@ManyToOne
-	@JoinColumn(name = "enseignant_id")
-	private Enseignant enseignant;
+	@JoinColumn(name = "Enseignant_Numero")
+	Enseignant enseignant;
 	
 	public Convention() {
 		super();

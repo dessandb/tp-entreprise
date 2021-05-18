@@ -10,22 +10,22 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="internship_offer")
+@Table(name="propositionstage")
 public class PropositionStage {
 	@Id
 	@GeneratedValue
-	private int id;
-	@Column(name="subject_offer")
-	private String sujet_propose;
-	@Column(name="date_offer")
-	private Date date_proposee;
-	@Column(name="duration")
-	private int duree;
-	@Column(name="pay")
-	private double remuneration;
+	int id;
+	@Column(name="Sujet_propose")
+	String sujet_propose;
+	@Column(name="DateProposition")
+	Date date_proposee;
+	@Column(name="Duree")
+	int duree;
+	@Column(name="Remuneration")
+	double remuneration;
 	@ManyToOne
-	@JoinColumn(name="entreprise_id")
-	private Entreprise entreprise;
+	@JoinColumn(name="Entreprise_Numero")
+	Entreprise entreprise;
 	@OneToOne(mappedBy="propStage")
 	private Convention convention;
 	

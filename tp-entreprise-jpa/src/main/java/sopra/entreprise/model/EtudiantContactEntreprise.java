@@ -1,13 +1,12 @@
 package sopra.entreprise.model;
 
 import java.util.Date;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="etudiant_contact_entreprise")
@@ -15,10 +14,12 @@ public class EtudiantContactEntreprise {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@OneToMany(mappedBy="contact")
-	private List<Entreprise> ents;
-	@OneToMany(mappedBy="contact_etud")
-	private List<Etudiant> etudiants;
+	@ManyToOne
+	@JoinColumn(name="Entreprise_Numero")
+	private Entreprise entreprise;
+	@ManyToOne
+	@JoinColumn(name="Etudiant_Numero")
+	private Etudiant etudiant;
 	@Column(name="DatePriseContact")
 	private Date DatePriseContact;
 	
@@ -32,42 +33,49 @@ public class EtudiantContactEntreprise {
 		super();
 		DatePriseContact = datePriseContact;
 	}
-
-
-
 	
-
-
-
-	public EtudiantContactEntreprise(List<Entreprise> ents, List<Etudiant> etudiants, Date datePriseContact) {
+	public EtudiantContactEntreprise(Entreprise entreprise, Etudiant etudiant, Date datePriseContact) {
 		super();
-		this.ents = ents;
-		this.etudiants = etudiants;
+		this.entreprise = entreprise;
+		this.etudiant = etudiant;
 		DatePriseContact = datePriseContact;
 	}
 
 
-	public List<Entreprise> getEnts() {
-		return ents;
+	public Long getId() {
+		return id;
 	}
 
 
 
-	public void setEnts(List<Entreprise> ents) {
-		this.ents = ents;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 
 
-	public List<Etudiant> getEtudiants() {
-		return etudiants;
+	public Entreprise getEntreprise() {
+		return entreprise;
 	}
 
 
 
-	public void setEtudiants(List<Etudiant> etudiants) {
-		this.etudiants = etudiants;
+	public void setEntreprise(Entreprise entreprise) {
+		this.entreprise = entreprise;
 	}
+
+
+
+	public Etudiant getEtudiant() {
+		return etudiant;
+	}
+
+
+
+	public void setEtudiant(Etudiant etudiant) {
+		this.etudiant = etudiant;
+	}
+
 
 
 
