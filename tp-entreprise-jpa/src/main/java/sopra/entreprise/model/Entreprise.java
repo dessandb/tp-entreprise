@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("Entreprise")
@@ -16,7 +15,8 @@ public class Entreprise extends Personne {
 	
 	@Column(name="address")
 	private String adresse;
-	@ManyToOne(mappedBy="ent")
+	@ManyToOne
+	@JoinColumn(name = "EtudiantContactEntreprise_Id")
 	EtudiantContactEntreprise contact;
 	@OneToMany(mappedBy="entreprise")
 	List<PropositionStage> propositions_stages;
