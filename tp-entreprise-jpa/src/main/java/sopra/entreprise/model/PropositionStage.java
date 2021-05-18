@@ -1,5 +1,6 @@
 package sopra.entreprise.model;
 import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class PropositionStage {
 	@Column(name="pay")
 	double remuneration;
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name = "Entreprise_id")
 	Entreprise entreprise;
 	@OneToOne(mappedBy="propStage")
 	Convention convention;

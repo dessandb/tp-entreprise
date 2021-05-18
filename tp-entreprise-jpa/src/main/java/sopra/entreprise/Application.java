@@ -3,25 +3,25 @@ package sopra.entreprise;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import sopra.entreprise.repository.IPersonneRepository;
-import sopra.entreprise.repository.IPropositionStageRepository;
-import sopra.entreprise.repository.jpa.PersonneRepositoryJpa;
-import sopra.entreprise.repository.jpa.PropositionStageRepositoryJpa;
 import sopra.entreprise.repository.IConventionRepository;
 import sopra.entreprise.repository.IEntrepriseRepository;
 import sopra.entreprise.repository.IEtudiantContactEntrepriseRepository;
 import sopra.entreprise.repository.IEtudiantRepository;
+import sopra.entreprise.repository.IPersonneRepository;
+import sopra.entreprise.repository.IPropositionStageRepository;
 import sopra.entreprise.repository.jpa.ConventionRepositoryJpa;
 import sopra.entreprise.repository.jpa.EntrepriseRepositoryJpa;
 import sopra.entreprise.repository.jpa.EtudiantContactEntrepriseRepositoryJpa;
 import sopra.entreprise.repository.jpa.EtudiantRepositoryJpa;
+import sopra.entreprise.repository.jpa.PersonneRepositoryJpa;
+import sopra.entreprise.repository.jpa.PropositionStageRepositoryJpa;
 
 
 
 public class Application {
 	private static Application instance = null;
 
-	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp-entreprise-jpa");
+	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("stagesjpa");
 
 	private final IPersonneRepository personneRepo = new PersonneRepositoryJpa();
 	private final IEntrepriseRepository entrepriseRepo = new EntrepriseRepositoryJpa();
